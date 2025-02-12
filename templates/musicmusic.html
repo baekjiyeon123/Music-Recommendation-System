@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        .form-group label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .form-group input, .form-group select {
+            padding: 8px;
+            font-size: 16px;
+            width: 200px;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .song-list {
+            margin-top: 20px;
+        }
+        .song-item {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .song-item h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .song-item p {
+            margin: 5px 0;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎶 Music Recommendation 🎵</h1>
+</header>
+
+<div class="container">
+    <form method="get" action="/">
+        <div class="form-group">
+            <label for="mood">Mood:</label>
+            <select id="mood" name="mood">
+                <option value="">Select Mood</option>
+                <option value="Positive">Positive</option>
+                <option value="Negative">Negative</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="time_of_day">Time of Day:</label>
+            <select id="time_of_day" name="time_of_day">
+                <option value="">Select Time of Day</option>
+                <option value="Day">Day</option>
+                <option value="Night">Night</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" placeholder="Enter Genre">
+        </div>
+
+        <button type="submit" class="submit-btn">Get Music</button>
+    </form>
+
+    <div class="song-list">
+        {% if songs %}
+            <h2>Recommended Songs:</h2>
+            {% for song in songs %}
+                <div class="song-item">
+                    <h3>{{ song['title'] }} by {{ song['artist'] }}</h3>
+                    <p><strong>Genre:</strong> {{ song['genre'] }}</p>
+                    <p><strong>Mood:</strong> {{ song['mood'] }}</p>
+                    <p><strong>Time of Day:</strong> {{ song['time_of_day'] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No songs found based on your selection.</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
