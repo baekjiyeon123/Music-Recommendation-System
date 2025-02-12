@@ -43,7 +43,7 @@ modified_data.columns = ['title', 'artist', 'genre', 'mood', 'time_of_day']
 print(modified_data.head())
 
 # MySQL 연결
-engine = create_engine('mysql+pymysql://root:qorwl20910!@localhost:3306/location_music')
+engine = create_engine('mysql+pymysql://root:<비밀번호>@localhost:3306/location_music')
 
 # 데이터프레임을 MySQL 테이블에 저장
 try:
