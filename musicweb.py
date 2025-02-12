@@ -5,7 +5,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # MySQL 연결
-engine = create_engine('mysql+pymysql://root:qorwl20910!@localhost:3306/location_music')
+engine = create_engine('mysql+pymysql://root:<비밀번호>@localhost:3306/location_music')
 
 # CSV 파일 경로
 file_path = 'C:/Users/82108/.kaggle/music_data/top50.csv'
